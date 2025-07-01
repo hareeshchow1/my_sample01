@@ -1,0 +1,20 @@
+name: Run Every 5 Minutes on Main
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-every-5-mins:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Example Step
+        run: echo "This workflow runs every 5 minutes on main branch!"
